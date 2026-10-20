@@ -48,7 +48,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           path: strix
 
@@ -58,7 +58,7 @@ jobs:
           targets: ${{ matrix.target }}
       
       - name: Checkout strix-roost
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: scientific-ontology-network/strix-roost
           path: strix-roost
