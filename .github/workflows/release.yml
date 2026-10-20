@@ -49,11 +49,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          path: strix
 
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
         with:
           targets: ${{ matrix.target }}
+      
+      - name: Checkout strix-roost
+        uses: actions/checkout@v4
+        with:
+          repository: scientific-ontology-network/strix-roost
+          path: strix-roost
 
       # -----------------------------
       # Linux dependencies (fixes openssl-sys)
