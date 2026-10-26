@@ -81,13 +81,14 @@ jobs:
       # Build
       # -----------------------------
       - name: Build
-        working-directory: src-tauri
+        working-directory: strix/src-tauri
         run: cargo build --release --target ${{ matrix.target }}
 
       # -----------------------------
       # Prepare artifacts
       # -----------------------------
       - name: Prepare artifact
+        working-directory: strix
         shell: bash
         run: |
           mkdir -p dist
@@ -102,12 +103,14 @@ jobs:
       # Archive (fixed)
       # -----------------------------
       - name: Archive (Linux/macOS)
+        working-directory: strix
         if: runner.os != 'Windows'
         shell: bash
         run: |
           tar czf ${BIN_NAME}-${{ matrix.artifact }}.tar.gz -C dist .
 
       - name: Archive (Windows)
+        working-directory: strix
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
@@ -117,6 +120,7 @@ jobs:
       # Upload artifacts
       # -----------------------------
       - name: Upload artifact
+        working-directory: strix
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.artifact }}
