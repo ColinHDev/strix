@@ -49,6 +49,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
           path: ../strix
 
       - name: Install Rust
