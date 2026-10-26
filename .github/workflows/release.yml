@@ -88,8 +88,8 @@ jobs:
       # Prepare artifacts
       # -----------------------------
       - name: Prepare artifact
-        working-directory: strix
         shell: bash
+        working-directory: strix
         run: |
           mkdir -p dist
 
@@ -103,16 +103,16 @@ jobs:
       # Archive (fixed)
       # -----------------------------
       - name: Archive (Linux/macOS)
-        working-directory: strix
         if: runner.os != 'Windows'
         shell: bash
+        working-directory: strix
         run: |
           tar czf ${BIN_NAME}-${{ matrix.artifact }}.tar.gz -C dist .
 
       - name: Archive (Windows)
-        working-directory: strix
         if: runner.os == 'Windows'
         shell: pwsh
+        working-directory: strix
         run: |
           Compress-Archive -Path dist\${{ env.BIN_NAME }}.exe -DestinationPath "${{ env.BIN_NAME }}-${{ matrix.artifact }}.zip"
 
@@ -120,8 +120,8 @@ jobs:
       # Upload artifacts
       # -----------------------------
       - name: Upload artifact
-        working-directory: strix
         uses: actions/upload-artifact@v4
+        working-directory: strix
         with:
           name: ${{ matrix.artifact }}
           path: |
