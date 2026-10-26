@@ -59,7 +59,7 @@ jobs:
         uses: actions/checkout@v7
         with:
           repository: scientific-ontology-network/strix-roost
-          path: strix-roost
+          path: ../strix-roost
 
       # -----------------------------
       # Linux dependencies (fixes openssl-sys)
