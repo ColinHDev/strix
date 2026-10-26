@@ -124,8 +124,8 @@ jobs:
         with:
           name: ${{ matrix.artifact }}
           path: |
-            *.tar.gz
-            *.zip
+            strix/*.tar.gz
+            strix/*.zip
 
   release:
     name: Publish Release
